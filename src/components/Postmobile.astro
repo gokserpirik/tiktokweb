@@ -1,0 +1,95 @@
+---
+
+import { Icon } from 'astro-icon/components'
+
+---
+
+<script>
+    window.handleClick = function(element) {
+        const video = element.querySelector('video');
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+
+    }
+
+    window.handleLike = function(element) {
+        element.classList.toggle('text-red-500');
+    }
+
+</script>
+
+
+
+
+<style>
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradient 2s linear infinite;
+    }
+    .postmobile {
+        scroll-snap-align: start;
+    }
+    </style>
+
+<div class="relative w-screen h-full z-0 postmobile " >
+    <div class="h-full w-screen" onclick="handleClick(this)" >
+        <video class="w-screen h-full object-cover"  loop={true}>
+            <source src="https://video.twimg.com/amplify_video/1752615555389952000/vid/avc1/1080x1920/UxAmFFpZbp5U53mb.mp4" type="video/mp4">
+        </video>
+       
+    </div>
+     
+    <div class="left absolute bottom-0 left-0 w-70 m-2 mb-4 text-white flex flex-col items-start">
+        <div class="name">John Doe</div>
+    <div class="caption">Have to watch this video</div>
+    <div class="audio flex flex-row items-center"> <Icon name="bxs:music"/> Never Gonna Give You Up - Rick Astley</div>
+    </div>
+    <div class="buttons absolute bottom-0 right-0 m-2 mb-4 w-16 items-center">
+        <div class="flex flex-col w-16 items-center justify-center text-white">
+            <div class="w-16 flex flex-col items-center">
+                <div class="profile-image relative">
+                    <div class="inline-block border-2 border-red-500 rounded-full p-1">
+                        <img src="https://picsum.photos/1080/1920" class="rounded-full w-12 h-12">
+                        <div class="absolute bottom-0 mb-0 ml-3 bg-gradient-to-r from-red-500 to-red-700 text-white text-2xl rounded-full animate-gradient"><Icon name={"bx:plus"}/></div>            </div>
+                </div>
+            </div>
+            <div class="h-4"></div>
+
+
+            <Icon name={"bxs:heart"} size={32} color="white" onclick={"handleLike(this)"} />
+
+            <p class="text-md">36.7K</p>
+
+            <div class="h-4"></div>
+
+                <Icon name={"bxs:message-square-dots"} size={32} />
+
+            <p class="text-md">1.2K</p>
+            <div class="h-4"></div>
+
+                <Icon name={"bxs:share"} size={32} />
+
+            <p class="text-md">301</p>
+            <div class="h-4"></div>
+
+            <div class="circle rounded-full h-10 w-10 bg-gray-800 "></div>
+        </div>
+    </div>
+</div>
+
+

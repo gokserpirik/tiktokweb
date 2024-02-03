@@ -1,0 +1,82 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Navbarx from "../components/navbar.astro";
+import Sidebarnav from "../components/sidebarnav.astro";
+import Desktoptop from "../components/desktoptop.astro";
+import Post from "../components/Post.astro";
+import Postmobile from "../components/Postmobile.astro";
+import Mobilebottom from "../components/mobilebottom.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <div id="desktopsite" class="hidden site sm:flex flex-col h-screen">
+    <Desktoptop />
+    <div class="flex flex-row w-screen" id="desktopcontent">
+      <div class="bar w-1/6"><Sidebarnav /></div>
+      <div class="posts w-5/6 overflow-y-scroll">
+        <div class="h-4"></div>
+        <Post /><Post /><Post /><Post />
+      </div>
+    </div>
+  </div>
+
+  <div class="sm:hidden h-screen" id="mobilesite">
+    <Navbarx />
+
+    <div class="posts overflow-y-scroll snap-y snap-mandatory" id="postsRef">
+      <Postmobile />
+      <Postmobile />
+      <Postmobile />
+      <Postmobile />
+    </div>
+
+    <Mobilebottom />
+  </div>
+</Layout>
+
+<script>
+  let navHeight = document.getElementById("navRef")!.offsetHeight;
+  let bottomHeight = document.getElementById("bottomRef")!.offsetHeight;
+  let totalHeight = document.getElementById("mobilesite")!.offsetHeight;
+  document.getElementById("postsRef")!.style.height = `${
+    totalHeight - navHeight - bottomHeight
+  }px`;
+
+  let desktoptopHeight = document.getElementById("desktoptop")!.offsetHeight;
+  let totalHeight2 = document.getElementById("desktopsite")!.offsetHeight;
+  document.getElementById("desktopcontent")!.style.height = `${
+    totalHeight2 - desktoptopHeight
+  }px`;
+
+  /* video controls */
+  // Get all the videos
+  let videos = document.querySelectorAll("video");
+
+  // Options for the Intersection Observer
+  let options = {
+    root: null, // use the viewport as the root
+    rootMargin: "0px", // no margins
+    threshold: 1.0, // trigger the callback when the video is fully in view
+  };
+
+  // Callback for the Intersection Observer
+  let callback = (entries: any, observer: any) => {
+    entries.forEach((entry:any) => {
+      if (entry.isIntersecting) {
+        // The video is fully in view, start it
+        entry.target.play();
+      } else {
+        // The video is not in view, pause it
+        entry.target.pause();
+      }
+    });
+  };
+
+  // Create the Intersection Observer
+  let observer = new IntersectionObserver(callback, options);
+
+  // Start observing the videos
+  videos.forEach((video) => observer.observe(video));
+</script>
+

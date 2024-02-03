@@ -1,0 +1,27 @@
+---
+
+import { Icon } from 'astro-icon/components'
+---
+
+<div id="desktoptop" class="top-desktop hidden sm:flex flex-row justify-between items-center w-screen px-10 border-b-2">
+
+    <img src="/tiktokblack.svg" class=" hidden lg:block w-24 py-4">
+    <img src="/sm-tiktok-black.svg" class=" lg:hidden w-8 py-4">
+
+    <div class=" items-center bg-gray-100 rounded-full hidden md:flex">
+        <input type="text" placeholder="Search" class="h-10 px-4 md:w-32 lg:w-72 text-md bg-transparent border-none focus:outline-none focus:ring-2">
+        <button class="px-4 py-2 rounded-r-full text-gray-300"> <Icon name={"bx:search"} size={24}/></button>
+      </div>
+    
+    <div class="actions flex flex-row gap-2">
+        <div class="upload text-sm flex flex-row items-center min-w-24 border p-1 px-3 gap-2 rounded-sm border-gray-300">
+            <Icon name={"bx:plus"}/>
+            <p>Upload</p>
+        </div>
+        <div class="upload text-sm flex flex-row items-center p-1 px-3 min-w-16 gap-2 rounded-sm text-white bg-[#FE2C55]">
+            <p>Log in</p>
+        </div>
+        <div class="log-in"></div>
+    </div>
+
+</div>

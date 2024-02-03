@@ -1,0 +1,90 @@
+---
+
+import { Icon } from 'astro-icon/components'
+---
+<script>
+      window.handleClick = function(element) {
+        const video = element.querySelector('video');
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+
+    }
+
+    window.handleLike = function(element) {
+        element.classList.toggle('text-red-500');
+    }
+
+</script>
+<style>
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradient 2s linear infinite;
+    }
+    </style>
+
+<div class="post pb-6 mb-6 border-b-2 pl-24 flex flex-col">
+    <div class="user flex flex-row">
+        <div class="w-16">
+            <div class="profile-image relative">
+                <div class="inline-block border-2 border-red-500 rounded-full p-1">
+                    <img src="https://picsum.photos/200/200" class="rounded-full w-12 h-12">
+                    <div class="absolute bottom-0 mb-1 ml-2 bg-gradient-to-r from-red-500 to-red-700 text-white text-xs px-1 rounded animate-gradient">Live</div>            </div>
+            </div>
+        </div>
+        <div class="name-post-follow flex flex-row justify-between">
+            <div class="left flex flex-col items-start">
+                <div class="name">John Doe</div>
+            <div class="caption">Have to watch this video</div>
+            <div class="audio flex flex-row items-center"> <Icon name="bxs:music"/> Never Gonna Give You Up - Rick Astley</div>
+            </div>
+
+            <div class="right">
+                <div class="follow text-sm flex flex-row items-center p-1 px-3 min-w-16 gap-2 rounded-sm text-[#FE2C55] bg-white border border-[#FE2C55] rounded-sm">
+                    <p>Follow</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="video flex flex-col ml-16">
+        <div class="flex flex-row gap-2 ">
+            <div class="w-72 aspect-[9/16]" onclick="handleClick(this)">
+                <video class="w-72 aspect-[9/16] object-cover" >
+                    <source src="https://video.twimg.com/amplify_video/1752615555389952000/vid/avc1/1080x1920/UxAmFFpZbp5U53mb.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="buttons flex flex-col items-center justify-end">
+                <div class="circle bg-gray-300 rounded-full p-3">
+                    <Icon name={"bxs:heart"} size={20}  onclick={"handleLike(this)"} />
+                </div>
+                <p class="text-sm">36.7K</p>
+                <div class="circle bg-gray-300 rounded-full p-3">
+                    <Icon name={"bxs:message-square-dots"} size={20} />
+                </div>
+                <p class="text-sm">1.2K</p>
+                <div class="circle bg-gray-300 rounded-full p-3">
+                    <Icon name={"bxs:share"} size={20} />
+                </div>
+                <p class="text-sm">301</p>
+            </div>
+        </div>
+        
+    </div>
+
+</div>

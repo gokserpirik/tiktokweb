@@ -1,0 +1,71 @@
+---
+
+import { Icon } from 'astro-icon/components'
+---
+
+<script>
+    window.handleNav = function(element) {
+        // Remove the active class from all icons
+        document.querySelectorAll('.icon').forEach(icon => {
+            icon.classList.add('active');
+        });
+
+        // Add the active class to the clicked icon
+        element.classList.remove('active');
+    }
+</script>
+
+<style>
+    .icon .bx {
+        display: none;
+    }
+
+    .icon .bxs {
+        display: inline-block;
+    }
+
+    .icon.active .bx {
+        display: inline-block;
+    }
+
+    .icon.active .bxs {
+        display: none;
+    }
+</style>
+
+
+
+<div id="bottomRef" class="bottom sm:hidden flex flex-row justify-between items-center text-white bg-black px-8 p-2 w-full ">
+
+    <div class="icon flex flex-col items-center justify-center"  onclick="handleNav(this)">
+        <Icon name={"bx:home"} size={20} class="bx" />
+        <Icon name={"bxs:home"} size={20} class="bxs" />
+        <p class="text-[10px]">Home</p>
+    </div>
+
+    <div class="icon flex flex-col items-center justify-center"  onclick="handleNav(this)">
+        <Icon name={"bx:compass"} size={20} class="bx" />
+        <Icon name={"bxs:compass"} size={20} class="bxs" />
+        <p class="text-[10px]">Explore</p>
+    </div>
+
+    <div class="p-1 px-2 w-16 bg-gradient-to-r rounded-md from-[#fe2c55] to-[#28f4ee]">
+        <div class="icon flex flex-col items-center w-12 justify-center rounded-md bg-black">
+            <Icon name={"bx:plus"} size={20} />
+        </div>
+    </div>
+
+    <div class="icon flex flex-col items-center justify-center"  onclick="handleNav(this)">
+        <Icon name={"bx:message"} size={20} class="bx" />
+        <Icon name={"bxs:message"} size={20} class="bxs" />
+        <p class="text-[10px]">Notifications</p>
+    </div>
+
+    <div class="icon flex flex-col items-center justify-center"  onclick="handleNav(this)">
+        <Icon name={"bx:user"} size={20} class="bx" />
+        <Icon name={"bxs:user"} size={20} class="bxs" />
+        <p class="text-[10px]">Profile</p>
+    </div>
+
+
+</div>
